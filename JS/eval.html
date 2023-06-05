@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        while (true) {
+            let expr = prompt("Enter an expression to evaluate (or 'q' to quit): ");
+            if (expr == 'q') {
+                break;
+            }
+            let tokens = expr.split(' ');
+            let result = null;
+            try {
+                result = tokens.reduce((accumulator, currentValue, index) => {
+                    if (index % 2 == 0) {
+                        return eval(`${accumulator} ${currentValue} ${tokens[index + 1]}`);
+                    }
+                    return accumulator;
+                });
+                console.log("Result: ", result);
+            } catch (error) {
+                console.log("Invalid expression");
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .main_container {
+            height: 100vh;
+            width: 100%;
+            /* border: 2px solid #000; */
+            background-image: url(https://wallpaperset.com/w/full/f/0/1/461126.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+
+        }
+
+        .login_div {
+            height: 40vh;
+            width: 40%;
+            /* border: 1px solid #000; */
+            z-index: 11;
+            position: absolute;
+            top: 30%;
+            visibility: hidden;
+            left: 28%;
+            transition: .5s;
+        }
+
+        .pic {
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            /* border: 1px solid #000; */
+            margin: 2% auto;
+            transition: .5s;
+        }
+
+        .pic img {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+        }
+
+
+        .blur {
+            filter: blur(8px);
+            transition: .5s;
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+        }
+
+        input {
+            height: 12%;
+            width: 50%;
+            margin-left: 25%;
+            padding: 3px;
+            border-radius: 12px;
+            outline: none;
+            border: none;
+        }
+
+        button:hover {
+            background-color: black !important;
+            color: white;
+            transition: .5s;
+            border: none;
+            font-weight: 500;
+        }
+
+        .show {
+            visibility: visible;
+            transition: .5s;
+        }
+
+        .window_main {
+            height: 100vh;
+            width: 100%;
+            border: 1px solid #000;
+            display: none;
+            background-image: url(https://www.gizchina.com/wp-content/uploads/images/2021/11/windows-7.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 2% 2%;
+        }
+
+        .icons {
+            height: auto;
+            width: 8%;
+            /* border: 1px solid #000; */
+            font-size: 42px;
+            color: white;
+            padding: 2% 2%;
+        }
+
+        .icons:hover {
+            background-color: lightblue;
+            transition: .5s;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .show2 {
+            /* transform: translateY(-100vh); */
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main_container"></div>
+    <div class="login_div">
+        <div class="pic">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM8aKPwZrocY_jkSbgotQG1fvyHJ0qHPPKNk33WkpC_g&s"
+                alt="">
+        </div>
+        <h1 style="text-align: center;margin-top: 3%;">Asharib</h1>
+        <input type="password" placeholder="Password" minlength="0" maxlength="7" autofocus>
+        <button style="height: 12%;width: 15%;font-size: 15px;;border: none;border-radius: 15px;">Login In</button>
+    </div>
+    <div class="window_main">
+        <div class="icons">
+            <i class="fa-solid fa-desktop"></i>
+            <span style="font-size: 18px;">PC</span>
+        </div>
+        <div style="margin-top: 2%;" class="icons">
+            <i class="fa-solid fa-user"></i>
+            <span style="font-size: 18px;">User</span>
+        </div>
+        <div style="margin-top: 2%;" class="icons">
+            <i class="fa-brands fa-tiktok"></i>
+            <span style="font-size: 18px;">TikTok</span>
+        </div>
+    </div>
+    <script>
+
+        var main = document.querySelector('.main_container')
+        var login = document.querySelector('.login_div')
+        var input = document.getElementsByTagName('input')[0]
+        var button = document.getElementsByTagName('button')[0]
+        var windows = document.querySelector(".window_main")
+        console.log(windows);
+        var correct = 'ASHARIB'
+        main.addEventListener('click', function () {
+            main.classList.add('blur')
+            login.classList.add('show')
+        })
+        button.addEventListener('click', function () {
+            if (input.value == "") {
+                alert('Enter Password')
+                console.log('input');
+            }
+            else if (input.value == correct) {
+                windows.classList.add('show2')
+                login.style.display = 'none'
+                main.style.display = 'none'
+                console.log('correct');
+            }
+
+            else {
+                alert('Wrong Password')
+                // console.log('dwag');
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>

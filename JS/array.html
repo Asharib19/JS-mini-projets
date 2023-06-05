@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" placeholder="enter a name">
+        <input type="number" placeholder="enter a roll number">
+        <button>send data</button>
+        <button>delete data</button>
+
+
+    </form>
+    <script>
+        let inp = document.querySelectorAll('input')
+        let btn = document.querySelectorAll('button')
+        let form = document.querySelector('form')
+        arr = []
+        btn[0].addEventListener('click', function (e) {
+            e.preventDefault()
+            sendData()
+            console.log(arr);
+        })
+        function sendData() {
+            
+            obj = {
+                name: inp[0].value,
+                roll: inp[1].value
+            }
+            // arr.push(obj)
+            arr.unshift(obj)
+
+            form.reset()
+
+        }
+        btn[1].addEventListener('click', function (e) {
+            e.preventDefault()
+            deleteData()
+            console.log(arr);
+        })
+        function deleteData() {
+            // arr.pop()
+            arr.shift()
+        }
+
+    </script>
+</body>
+
+</html>

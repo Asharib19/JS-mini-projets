@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .done {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h1>Shopping List</h1>
+    <p id="first">Get it done today</p>
+    <input id="userinput" type="text" placeholder="enter items">
+    <button id="enter">Enter</button>
+    <ul>
+        <li class="list">Notebook <button class="remove">Remove</button></li>
+        <li class="list">Jello <button class="remove">Remove</button></li>
+        <li class="list">Spinach <button class="remove">Remove</button></li>
+        <li class="list">Rice <button class="remove">Remove</button></li>
+        <li class="list">Birthday Cake <button class="remove">Remove</button></li>
+        <li class="list">Candles <button class="remove">Remove</button></li>
+    </ul>
+
+
+    <script>
+        var enter = document.getElementById("enter");
+        var input = document.getElementById("userinput");
+        var ul = document.querySelector("ul");
+        var del = document.getElementsByClassName("remove");
+
+        function removeItem(event) {
+            event.target.parentElement.remove();
+        }
+
+
+
+        function toggleDone(event) {
+            if (event.target.classList.contains("list")) {
+                event.target.classList.toggle("done");
+            }
+        }
+
+
+        function inputLength() {
+            return input.value.length;
+        }
+
+
+        function createListElement() {
+            var li = document.createElement("li");
+            li.className = "list";
+            li.appendChild(document.createTextNode(input.value + " "));
+            ul.appendChild(li);
+            input.value = "";
+
+            var button = document.createElement("button");
+            button.className = "remove";
+            button.appendChild(document.createTextNode("Remove"));
+            li.appendChild(button);
+
+            button.addEventListener("click", removeItem);
+
+        }
+
+
+        function addListAfterClick() {
+            if (inputLength() > 0 && input.value !== " ") {
+                createListElement();
+            }
+        }
+
+
+        function addListAfterKeypress(event) {
+            if (inputLength() > 0 && event.keyCode === 13 && input.value !== " ") {
+                createListElement();
+            }
+        }
+
+
+        for (var i = 0; i < del.length; i++) {
+            del[i].addEventListener("click", removeItem);
+        }
+
+
+        document.addEventListener("click", toggleDone);
+
+
+
+        enter.addEventListener("click", addListAfterClick);
+
+
+        input.addEventListener("keypress", addListAfterKeypress);
+    </script>
+</body>
+
+</html>
